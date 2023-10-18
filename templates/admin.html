@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-500">
+    <div
+      class="bg-gray-500 grid md:grid-cols-3 grid-cols-1 text-white p-4 h-full"
+    >
+      <div class="bg-green-500 text-white p-4 h-full cols-span-1">
+        <form
+          name="edit"
+          method="post"
+          action="{{url_for('admin')}}"
+          class="bg-white shadow-md sm:w-full rounded px-8 pt-6 pb-8 mb-4"
+        >
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="name"
+            >
+              Id
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="name"
+              type="number"
+              name="id"
+              placeholder="2"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="email"
+            >
+              Progress
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="progress"
+              type="number"
+              name="progress"
+              placeholder="25"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="name"
+            >
+              Expected Date
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="expected"
+              type="date"
+              name="expected"
+            />
+          </div>
+          <div class="mb-6 text-center">
+            <button
+              type="submit"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              Edit
+            </button>
+          </div>
+        </form>
+
+        <!-- second form -->
+
+        <form
+          name="create"
+          method="post"
+          action="{{url_for('admin')}}"
+          class="bg-white shadow-md sm:w-full rounded px-8 pt-6 pb-8 mb-4"
+        >
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="name"
+            >
+              Order_id
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="ordername"
+              type="text"
+              name="order_id"
+              placeholder="xuws78sh"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="email"
+            >
+              Progress
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="newprogress"
+              name="progress"
+              type="number"
+              placeholder="johndoe@example.com"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="name"
+            >
+              Expected
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="newexpected"
+              type="date"
+              name="expected"
+              placeholder="John Doe"
+            />
+          </div>
+          <div class="mb-6 text-center">
+            <button
+              type="submit"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              Create new
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- second form for creating -->
+
+      <!-- The table -->
+      <!-- <div
+        class="bg-purple-500 text-white p-4 h-full  sm:w-full sm:flex sm-flex-wrap"
+      > -->
+      <table class="w-full bg-white shadow-md col-span-2 rounded-lg">
+        <thead class="bg-gray-200 text-gray-600 w-full">
+          <tr class="w-full">
+            <th class="py-2 px-4">Id</th>
+            <th class="py-2 px-4">Tracking Number</th>
+            <th class="py-2 px-4">Expected Arrival</th>
+            <th class="py-2 px-4">Progress</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 w-full">
+          <!-- Loop through your student data and populate the table rows -->
+          <tr class="w-full">
+            {% for package in packages %}
+            <td class="py-2 px-4 text-center">{{package.id}}</td>
+            <td class="py-2 px-4 text-center">{{package.track_id}}</td>
+            <td class="py-2 px-4 text-center">{{package.expected}}</td>
+            <td class="py-2 px-4 text-center">{{package.progress}}</td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+      <!-- </div> -->
+    </div>
+  </body>
+</html>
